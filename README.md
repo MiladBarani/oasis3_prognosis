@@ -128,7 +128,7 @@ If this code is useful in your work, please cite the accompanying paper (details
 ```bibtex
 @article{placeholder,
   title   = {A Leakage-Free Benchmark and Multi-Dimensional Evaluation of Explainable AI for Trustworthy Dementia-Progression Prediction},
-  author  = {Jafari Barani, Milad and others},
+  author  = {Jafari Barani M, Garcia-Diaz V, Nunez-Valdez ER, Espana Lopera JC},
   year    = {2026},
   note    = {Manuscript in preparation}
 }
