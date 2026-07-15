@@ -59,7 +59,7 @@ The task is defined only over participants who are **non-demented at baseline**,
 
 ```bash
 # clone
-git clone https://github.com/<your-username>/<repo-name>.git
+git clone https://github.com/MiladBarani/oasis3_prognosis.git
 cd <repo-name>
 
 # create an environment (example: venv)
