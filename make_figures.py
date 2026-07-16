@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import json
 import os
+from xml.parsers.expat import model
 
 import numpy as np
 import pandas as pd
@@ -90,8 +91,9 @@ def _grud_probs():
     model = keras.saving.load_model(f"{ART}/grud_model.keras")
     d = np.load(f"{ART}/grud_test_data.npz", allow_pickle=True)
     X, y = d["X_test"].astype("float32"), d["y_test"].astype(int)
-    prob = mc_dropout(model, X, n=50)["mean"]
-    return y, prob
+    prob_det = model.predict(X, verbose=0).ravel()
+    prob_mc  = mc_dropout(model, X, n=50)["mean"]
+    return y, prob_det, prob_mc
 
 
 def fig2_curves(y, prob):
@@ -105,7 +107,7 @@ def fig2_curves(y, prob):
     axes[0].set_xlabel("False positive rate"); axes[0].set_ylabel("True positive rate")
     axes[0].set_title("ROC — GRU-D"); axes[0].legend(frameon=False)
     axes[1].plot(rec, pre, color=C["grud"], lw=2,
-                 label=f"AP={average_precision_score(y, prob):.3f}")
+                 label=f"PR-AUC={average_precision_score(y, prob):.3f}")
     axes[1].axhline(y.mean(), ls="--", color="gray", lw=1, label=f"baseline={y.mean():.2f}")
     axes[1].set_xlabel("Recall"); axes[1].set_ylabel("Precision")
     axes[1].set_title("Precision–Recall — GRU-D"); axes[1].legend(frameon=False)
@@ -256,8 +258,9 @@ def run():
     try:
         yp = _grud_probs()
         if yp is not None:
-            fig2_curves(*yp)
-            fig8_calibration(*yp)
+            y, p_det, p_mc = yp
+            fig2_curves(y, p_det)
+            fig8_calibration(y, p_mc)
     except Exception as e:
         print(f"  [fig2/8] رد شد: {e}")
     print(f"\n  ✅ نمودارها در {FIG}/")
