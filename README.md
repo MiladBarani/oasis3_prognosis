@@ -59,8 +59,8 @@ The task is defined only over participants who are **non-demented at baseline**,
 
 ```bash
 # clone
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/MiladBarani/oasis3_prognosis.git
+cd oasis3_prognosis
 
 # create an environment (example: venv)
 python -m venv oasis3
@@ -128,7 +128,7 @@ If this code is useful in your work, please cite the accompanying paper (details
 ```bibtex
 @article{placeholder,
   title   = {A Leakage-Free Benchmark and Multi-Dimensional Evaluation of Explainable AI for Trustworthy Dementia-Progression Prediction},
-  author  = {Jafari Barani, Milad and others},
+  author  = {Jafari Barani M, Garcia-Diaz V, Nunez-Valdez ER, Espana Lopera JC},
   year    = {2026},
   note    = {Manuscript in preparation}
 }
@@ -138,7 +138,7 @@ If this code is useful in your work, please cite the accompanying paper (details
 
 ## License
 
-No license is specified yet. Until a license file is added, the code is under exclusive copyright by default; contact the author before reuse. (Consider adding an OSI-approved license such as MIT or Apache-2.0 before public release.)
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgements
 
